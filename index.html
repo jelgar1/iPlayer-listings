@@ -13,7 +13,11 @@
   </head>
 
   <body ng-controller='IPlayerListingsController as ctrl'>
-    <button class="btn" ng-click="ctrl.doSearch()">Search</button>
+    <form class="form-horizontal">
+      <input type="text" ng-model="searchCtrl.searchTerm">
+      <button class="btn" ng-click="ctrl.doSearch()">Search</button>
+      <button class="btn" ng-click="ctrl.countPages()">Count Pages</button>
+    </form>
     <ul class="list-group">
       <li ng-repeat="show in ctrl.searchResult.atoz_programmes.elements">
         <img ng-src="{{show.picture_url}}&s=50">

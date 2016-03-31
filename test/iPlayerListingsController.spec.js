@@ -48,5 +48,12 @@ describe('IPlayerListingsController', function() {
       httpBackend.flush();
       expect(ctrl.searchResult.shows).toEqual(shows);
     });
+    it('calculates the number of pages to display', function() {
+      ctrl.searchTerm = '1';
+      ctrl.doSearch();
+      ctrl.countPages();
+      httpBackend.flush();
+      expect(ctrl.countPages()).toEqual(4);
+    });
   });
 });
