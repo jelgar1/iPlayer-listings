@@ -14,6 +14,22 @@ describe('IPlayerListingsController', function() {
 
   describe('when searching for a user', function() {
 
+    var httpBackend;
+
+    beforeEach(inject(function($httpBackend) {
+        httpBackend = $httpBackend;
+        httpBackend
+        .expectGET("https://ibl.api.bbci.co.uk//ibl/v1/atoz/a/programmes?page=1")
+        .respond(
+            { shows: shows }
+          );
+    }));
+
+    afterEach(function() {
+      httpBackend.verifyNoOutstandingExpectation();
+      httpBackend.verifyNoOutstandingRequest();
+     });
+
   var shows = [
     {
       "title": "Eastenders",
@@ -27,8 +43,9 @@ describe('IPlayerListingsController', function() {
   ];
 
     it('displays search results', function() {
-      ctrl.searchTerm = 'hello';
+      ctrl.searchTerm = '1';
       ctrl.doSearch();
+      httpBackend.flush();
       expect(ctrl.searchResult.shows).toEqual(shows);
     });
   });

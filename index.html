@@ -9,12 +9,13 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="js/app.js"></script>
     <script src="js/iPlayerListingsController.js"></script>
+    <script src="js/searchFactory.js"></script>
   </head>
 
   <body ng-controller='IPlayerListingsController as ctrl'>
-    <button class="btn" ng-click="searchCtrl.doSearch()">Search</button>
+    <button class="btn" ng-click="ctrl.doSearch()">Search</button>
     <ul class="list-group">
-      <li ng-repeat="show in ctrl.searchResult.shows">
+      <li ng-repeat="show in ctrl.searchResult.atoz_programmes.elements">
         <img ng-src="{{show.picture_url}}&s=50">
         {{show.title}}
       </li>
