@@ -5,15 +5,24 @@ iPlayerListings.controller('IPlayerListingsController', ['Search', function(Sear
   self.doSearch = function() {
   Search.query(self.searchTerm)
     .then(function(response) {
-      self.searchResult = response.data;
+      self.searchResult = response.data.atoz_programmes;
       console.log(self.searchResult);
+      self.countPages();
     });
   };
 
   self.countPages = function() {
-    var show_count = self.searchResult.atoz_programmes.count;
-    var show_per_page = self.searchResult.atoz_programmes.per_page;
-    return Math.round(show_count / show_per_page);
+    var show_count = self.searchResult.count;
+    var show_per_page = self.searchResult.per_page;
+    number_of_pages = (Math.round(show_count / show_per_page));
+    self.pagesArray();
+  };
+
+  self.pagesArray = function() {
+    self.pages_array = [];
+    for (var i = 1; i <= number_of_pages; i++) {
+      self.pages_array.push(i);
+    }
   };
 
 }]);

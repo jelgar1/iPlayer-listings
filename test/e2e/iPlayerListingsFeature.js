@@ -1,8 +1,8 @@
 describe('iPlayer Listings finder', function() {
   beforeEach(function() {
     browser.get('http://localhost:8080');
-    listings = element.all(by.repeater('show in ctrl.searchResult.atoz_programmes.elements'));
-    pages = element.all(by.repeater('page in ctrl.pages'));
+    listings = element.all(by.repeater('show in ctrl.searchResult.elements'));
+    pages = element.all(by.repeater('page in ctrl.pages_array'));
   });
 
   it('has a title', function() {
@@ -15,7 +15,8 @@ describe('iPlayer Listings finder', function() {
   });
 
   it('finds the number of pages', function() {
-    expect(listings.last().getText()).toEqual('4');
+    element(by.className('btn')).click();
+    expect(pages.last().getText()).toEqual('4');
   });
 
 });

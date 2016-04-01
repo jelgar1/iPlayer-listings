@@ -16,13 +16,15 @@
     <form class="form-horizontal">
       <input type="text" ng-model="searchCtrl.searchTerm">
       <button class="btn" ng-click="ctrl.doSearch()">Search</button>
-      <button class="btn" ng-click="ctrl.countPages()">Count Pages</button>
     </form>
     <ul class="list-group">
-      <li ng-repeat="show in ctrl.searchResult.atoz_programmes.elements">
+      <li ng-repeat="show in ctrl.searchResult.elements">
         <img ng-src="{{show.picture_url}}&s=50">
         {{show.title}}
       </li>
     </ul>
+    <span ng-repeat="page in ctrl.pages_array">
+      {{page}}
+    </span>
   </body>
   </html>
