@@ -2,8 +2,8 @@ iPlayerListings.controller('IPlayerListingsController', ['Search', function(Sear
 
   var self = this;
 
-  self.doSearch = function() {
-  Search.query(self.searchTerm)
+  self.doSearch = function(page) {
+  Search.query(page, self.searchTerm)
     .then(function(response) {
       self.searchResult = response.data.atoz_programmes;
       console.log(self.searchResult);

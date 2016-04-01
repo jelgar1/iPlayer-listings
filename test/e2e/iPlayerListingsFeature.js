@@ -19,4 +19,10 @@ describe('iPlayer Listings finder', function() {
     expect(pages.last().getText()).toEqual('4');
   });
 
+  it('can click through to another page', function() {
+    element(by.className('btn')).click();
+    element(by.id('page4')).click();
+    expect(listings.first().getText()).toEqual('The Arts Show');
+  });
+
 });

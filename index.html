@@ -24,7 +24,7 @@
       </li>
     </ul>
     <span ng-repeat="page in ctrl.pages_array">
-      {{page}}
+      <button id="page{{page}}" ng-click="ctrl.doSearch(page)">{{page}}</button>
     </span>
   </body>
   </html>
