@@ -11,20 +11,18 @@
     <script src="js/iPlayerListingsController.js"></script>
     <script src="js/searchFactory.js"></script>
   </head>
-
-  <body ng-controller='IPlayerListingsController as ctrl'>
-    <form class="form-horizontal">
-      <input type="text" ng-model="searchCtrl.searchTerm">
-      <button class="btn" ng-click="ctrl.doSearch()">Search</button>
-    </form>
+  <body ng-controller='IPlayerListingsController as ctrl' ng-init="ctrl.doSearch('a', 1)">
+    <span ng-repeat="character in ctrl.characters">
+      <button id="character_{{character}}" ng-click="ctrl.doSearch(character, 1); ctrl.setCurrentCharacter(character)">{{character}}</button>
+    </span>
     <ul class="list-group">
       <li ng-repeat="show in ctrl.searchResult.elements">
-        <img ng-src="{{show.picture_url}}&s=50">
+        <img id="image" ng-src="{{ctrl.image_url(show.images.standard)}}">
         {{show.title}}
       </li>
     </ul>
     <span ng-repeat="page in ctrl.pages_array">
-      <button id="page{{page}}" ng-click="ctrl.doSearch(page)">{{page}}</button>
+      <button id="page{{page}}" ng-click="ctrl.doSearch(ctrl.current_character, page)">{{page}}</button>
     </span>
   </body>
   </html>

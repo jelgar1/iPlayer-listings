@@ -1,9 +1,9 @@
 iPlayerListings.factory('Search', ['$http', function($http) {
-  var queryUrl = 'https://ibl.api.bbci.co.uk//ibl/v1/atoz/b/programmes';
+  var queryUrl = 'https://ibl.api.bbci.co.uk//ibl/v1/atoz/';
   return {
-    query: function(page, searchTerm) {
+    query: function(search_term, page) {
       return $http({
-        url: queryUrl,
+        url: queryUrl + search_term + '/programmes',
         method: 'GET',
         params: {
           'page': page

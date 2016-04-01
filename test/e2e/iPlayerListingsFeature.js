@@ -11,24 +11,21 @@ describe('iPlayer Listings finder', function() {
   });
 
   it('finds listings', function() {
-    element(by.className('btn')).click();
     expect(listings.first().getText()).toEqual('Abadas');
   });
 
   it('finds the number of pages', function() {
-    element(by.className('btn')).click();
     expect(pages.last().getText()).toEqual('4');
   });
 
   it('can click through to another page', function() {
-    element(by.className('btn')).click();
     element(by.id('page4')).click();
-    expect(listings.first().getText()).toEqual('The Arts Show');
+    expect(listings.first().getText()).toEqual('Artsnight');
   });
 
   it('can click through different letters and numbers', function() {
     characters.get(1).click();
-    expect(listings.first().getText()).toEqual(' Babar Ahmad: The British Cyber-Jihadist');
+    expect(listings.first().getText()).toEqual('Babar Ahmad: The British Cyber-Jihadist');
   });
 
 });
