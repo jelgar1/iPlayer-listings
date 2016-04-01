@@ -1,4 +1,9 @@
 exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
-  specs: ['iPlayerListingsFeature.js']
+  specs: ['iPlayerListingsFeature.js'],
+  multiCapabilities: [{
+    browserName: 'firefox'
+  }, {
+    browserName: 'chrome'
+  }]
 };
