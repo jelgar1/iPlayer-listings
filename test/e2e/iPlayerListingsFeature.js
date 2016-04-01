@@ -3,6 +3,7 @@ describe('iPlayer Listings finder', function() {
     browser.get('http://localhost:8080');
     listings = element.all(by.repeater('show in ctrl.searchResult.elements'));
     pages = element.all(by.repeater('page in ctrl.pages_array'));
+    characters = element.all(by.repeater('character in ctrl.characters'));
   });
 
   it('has a title', function() {
@@ -23,6 +24,11 @@ describe('iPlayer Listings finder', function() {
     element(by.className('btn')).click();
     element(by.id('page4')).click();
     expect(listings.first().getText()).toEqual('The Arts Show');
+  });
+
+  it('can click through different letters and numbers', function() {
+    characters.get(1).click();
+    expect(listings.first().getText()).toEqual(' Babar Ahmad: The British Cyber-Jihadist');
   });
 
 });
